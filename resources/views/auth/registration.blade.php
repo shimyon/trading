@@ -17,24 +17,21 @@
                         {{Session::get('success')}}
                     </div>
                     @endif    
-                    <form class="user">
+                    <form action="/customauth/storeRegister" class="user" method="POST">
+                        @csrf
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="text" class="form-control form-control-user @error('firstname') is-invalid @enderror" name="firstname" id="FirstName"
                                     placeholder="First Name">
                                     @error('firstname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                      <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control form-control-user @error('lastname') is-invalid @enderror" name="lastname" id="LastName"
                                     placeholder="Last Name">
                                     @error('lastname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                       <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                             </div>
                         </div>
@@ -42,9 +39,7 @@
                             <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" id="Email"
                                 placeholder="Email Address">
                                 @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                 @enderror
                         </div>
                         <div class="form-group row">
@@ -52,18 +47,14 @@
                                 <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password"
                                     id="Password" placeholder="Password">
                                     @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                      <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                             </div>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control form-control-user @error('repeatpassword') is-invalid @enderror" name="repeatpassword"
-                                    id="RepeatPassword" placeholder="Repeat Password">
-                                    @error('repeatpassword')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    id="Password" placeholder="Conform Password">
+                                    @error('password')
+                                       <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                             </div>
                         </div>

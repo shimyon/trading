@@ -16,11 +16,16 @@ use App\Http\Controllers\Config\ConfigurationController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 // login and registration
 Route::get('/customauth/usersRegistration', [CustomAuthController::class, 'usersRegistraton']);
+Route::post('/customauth/storeRegister', [CustomAuthController::class, 'storeRegister']);
 Route::get('/customauth/ViewDesk', [CustomAuthController::class, 'ViewDesk']);
+Route::get('/customauth/Dashboard', [CustomAuthController::class, 'Dashboard']);
+Route::get('/customauth/usersLogin', [CustomAuthController::class, 'usersLogin']);
+Route::post('/customauth/customLogin', [CustomAuthController::class, 'customLogin']);
+
 // configuration
 Route::get('/config/configList', [ConfigurationController::class, 'configList']);
 Route::get('/config/configFormAdd', [ConfigurationController::class, 'configFormAdd']);

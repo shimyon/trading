@@ -14,7 +14,7 @@
     {{ session('status') }}
     </div>
     @endif
-    <form action="/config/configFormStore" method="POST" enctype="multipart/form-data">
+    <form action="/config/configFormStore" class="user" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -50,21 +50,72 @@
     </div>
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="isStop" id="isStop" checked>
-                <label class="form-check-label" for="flexCheckDefault" checked>
-                  Stop
-                </label>
-                @error('isStop')
-                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
-              </div>
+            <input type="text" class="form-control form-control-user @error('buy_unit') is-invalid @enderror" name="buy_unit" id="buy_unit"
+                    placeholder="Enter Buying Unit">
+            @error('buy_unit')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-sm-6">
             <input type="date" class="form-control form-control-user @error('stopon') is-invalid @enderror" name="stopon" id="stOpon">
                 @error('stopon')
                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" class="form-control form-control-user @error('exp_sl') is-invalid @enderror" name="exp_sl" id="exp_sl"
+                    placeholder="Enter Exp SL">
+                    @error('exp_sl')
+                       <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user @error('exp_tp') is-invalid @enderror" name="exp_tp" id="exp_tp" placeholder="Enter Exp TP">
+                @error('exp_tp')
+                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" class="form-control form-control-user @error('rsi_buy') is-invalid @enderror" name="rsi_buy" id="rsi_buy"
+                    placeholder="Enter Rsi Buy">
+                    @error('rsi_buy')
+                       <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user @error('rsi_sell') is-invalid @enderror" name="rsi_sell" id="rsi_sell" placeholder="Enter Rsi Sell">
+                @error('rsi_sell')
+                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user @error('new_trade_wait_time') is-invalid @enderror"
+            id="new_trade_wait_time" name="new_trade_wait_time" placeholder="Enter New Trade Wait Time">
+            @error('new_trade_wait_time')
+               <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isStop" id="isStop" checked>
+                <label class="form-check-label" for="flexCheckDefault" checked>
+                  Stop
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isStopLossHandle" id="isStopLossHandle" checked>
+                <label class="form-check-label" for="flexCheckDefault" checked>
+                  Stop Loss Handle
+                </label>
+            </div>
         </div>
     </div>
       <center>

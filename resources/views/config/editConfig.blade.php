@@ -52,16 +52,10 @@
                 <label class="form-check-label" for="flexCheckDefault" >
                   Stop
                 </label>
-                @error('isStop')
-                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
               </div>
         </div>
         <div class="col-sm-6">
             <input type="date" class="form-control form-control-user @error('stopon') is-invalid @enderror" value="{{ date('Y-m-d', strtotime($configurations->stopon)) }}" name="stopon" id="stOpon">
-                @error('stopon')
-                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
         </div>
     </div>
       <center>

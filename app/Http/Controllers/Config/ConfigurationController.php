@@ -26,11 +26,21 @@ class ConfigurationController extends Controller
             'price' => 'required',
             'tp' => 'required',
             'sl' => 'required',
-            'isStop' => 'required',
-            'stopon' => 'required',
+            'isStop' => '',
+            'stopon' => '',
+            'buy_unit' => 'required',
+            'exp_sl' => 'required',
+            'exp_tp' => 'required',
+            'rsi_buy' => 'required',
+            'rsi_sell' => 'required',
+            'new_trade_wait_time' => 'required',
+            'isStopLossHandle' => '',
         ]);
         if (request('isStop') === 'on') {
             $validatedData['isStop'] = true;
+        }
+        if (request('isStopLossHandle') === 'on') {
+            $validatedData['isStopLossHandle'] = true;
         }
         // dd($validatedData);
         $show = Configuration::create($validatedData);

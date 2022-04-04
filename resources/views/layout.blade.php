@@ -16,9 +16,14 @@
     <link href="/asset/css/sb-admin-2.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"> 
-    
+    <style>
+        label.error {
+            color: #dc3545;
+            font-size: 14px;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gradient-primary">
    
 @yield('content')
    <!-- Bootstrap core JavaScript-->
@@ -30,5 +35,8 @@
 
    <!-- Custom scripts for all pages-->
    <script src="/asset/js/sb-admin-2.min.js"></script>
+    <!-- Custom validation for registration pages-->
+   <script src="/asset/js/custom.js" type="text/javascript"></script>
+  <script src="/asset/js/jquery.validate.min.js" type="text/javascript"></script>
 </body>
 </html>
