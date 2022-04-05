@@ -29,14 +29,14 @@ class CustomAuthController extends Controller
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:users',
             'password' => 'required',
         ]);
 
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect('/config/configList')->with('success','Post created successfully.');
+        return redirect('/customauth/usersLogin')->with('success','Registration created successfully.');
     }
 
     public function create(array $data)
@@ -57,7 +57,7 @@ class CustomAuthController extends Controller
     public function customLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
             'password' => 'required',
         ]);
    

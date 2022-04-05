@@ -26,25 +26,26 @@ class ConfigurationController extends Controller
             'price' => 'required',
             'tp' => 'required',
             'sl' => 'required',
-            'isStop' => '',
-            'stopon' => '',
+            'isStop' => 'required',
+            'stopon' => 'required',
             'buy_unit' => 'required',
             'exp_sl' => 'required',
             'exp_tp' => 'required',
             'rsi_buy' => 'required',
             'rsi_sell' => 'required',
             'new_trade_wait_time' => 'required',
-            'isStopLossHandle' => '',
+            'isStopLossHandle' => 'required',
         ]);
+         //dd($validatedData);
         if (request('isStop') === 'on') {
             $validatedData['isStop'] = true;
         }
         if (request('isStopLossHandle') === 'on') {
             $validatedData['isStopLossHandle'] = true;
         }
-        // dd($validatedData);
+        //   dd($validatedData);
         $show = Configuration::create($validatedData);
-        //dd($show);
+        //  dd($show);
    
         return redirect('/config/configList')->with('success', 'Configuration is successfully saved');
     }
@@ -64,10 +65,21 @@ class ConfigurationController extends Controller
             'sl' => 'required',
             'isStop' => 'required',
             'stopon' => 'required',
+            'buy_unit' => 'required',
+            'exp_sl' => 'required',
+            'exp_tp' => 'required',
+            'rsi_buy' => 'required',
+            'rsi_sell' => 'required',
+            'new_trade_wait_time' => 'required',
+            'isStopLossHandle' => 'required',
         ]);
     //  dd($validatedData);
         if (request('isStop') === 'on') {
             $validatedData['isStop'] = true;
+        }
+
+        if (request('isStopLossHandle') === 'on') {
+            $validatedData['isStopLossHandle'] = true;
         }
           Configuration::find($id)->update($validatedData);
         //   dd($validatedData);

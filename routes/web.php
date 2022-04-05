@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\CustomAuthController;
 use App\Http\Controllers\Config\ConfigurationController;
+use App\Http\Controllers\user\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,12 @@ Route::get('/config/editconfig/{id}', [ConfigurationController::class, 'editconf
 Route::post('/config/configFormupdate/{configurations}', [ConfigurationController::class, 'configFormupdate']);
 Route::post('/config/deleteConfig/{id}', [ConfigurationController::class, 'deleteConfig']);
 
+// users
+Route::get('/user/userList', [UsersController::class, 'userList']);
+Route::get('/user/userFormAdd', [UsersController::class, 'userFormAdd']);
+Route::post('/user/userFormStore', [UsersController::class, 'userFormStore']);
+Route::get('/user/edituser/{id}', [UsersController::class, 'edituser']);
+Route::post('/user/userFormupdate/{users}', [UsersController::class, 'userFormupdate']);
+Route::post('/user/deleteUser/{id}', [UsersController::class, 'deleteUser']);
+Route::get('/user/editpassword/{id}', [UsersController::class, 'editpassword']);
+Route::post('/user/password', [UsersController::class, 'password']);

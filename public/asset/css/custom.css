@@ -1,0 +1,11 @@
+.bg-login-image {
+    background-image: url("/asset/image/trading.jpeg"); 
+    background-position: center;
+    background-size: cover
+}
+
+.bg-register-image {
+    background-image: url("/asset/image/trading1.jpg");
+    background-position: center;
+    background-size: cover
+}

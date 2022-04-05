@@ -16,5 +16,12 @@ class Configuration extends Model
         'isStop',
         'stopon',
         'isCompleted',
+        'buy_unit',
+        'exp_sl',
+        'exp_tp',
+        'rsi_buy',
+        'rsi_sell',
+        'new_trade_wait_time',
+        'isStopLossHandle',
     ];
 }
