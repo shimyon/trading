@@ -43,4 +43,5 @@ Route::get('/user/edituser/{id}', [UsersController::class, 'edituser']);
 Route::post('/user/userFormupdate/{users}', [UsersController::class, 'userFormupdate']);
 Route::post('/user/deleteUser/{id}', [UsersController::class, 'deleteUser']);
 Route::get('/user/editpassword/{id}', [UsersController::class, 'editpassword']);
-Route::post('/user/password', [UsersController::class, 'password']);
+Route::post('/user/password/{id}', [UsersController::class, 'password']);
+Route::get('/user/get', [UsersController::class, 'get']);

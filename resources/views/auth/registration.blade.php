@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control form-control-user @error('repeatpassword') is-invalid @enderror" name="repeatpassword"
-                                    id="Password" placeholder="Conform Password">
+                                    id="RepeatPassword" placeholder="Conform Password">
                                     @error('password')
                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror

@@ -75,48 +75,33 @@ class UsersController extends Controller
         return redirect('/user/userList')->with('success', ' User Data is successfully deleted');
     }
 
-    public function editpassword(Request $request)
+    public function editpassword(Request $request,$id)
     {
-        $data = User::select('users.id',
+        $users = User::select('users.id',
         DB::RAW('concat(firstname, " ", lastname) AS user_name'), 
         )
         ->where('users.id', $request->id)->first();
-        return view('user.editpassword', [
-        'user_name' => $data->user_name,
+        return view('user.editpassword',compact('users'), [
+        'user_name' => $users->user_name,
         ]);
+        //  dd($users);
     }
 
     public function password(Request $request,$id)
-    {
-        $id = $request->get('id');
-        dd($id);
-        $validator = Validator::make($request->all(), [
-            'password' => 'required|min:6'
+    {  
+        $users = User::findOrFail($id);
+        // $users->get('id');
+        // dd($users);
+        $request->validate([
+            'password' => 'required',
         ]);
-        if ($validator->fails()) {
-            return response()->json(
-                array(
-                    'isok' => false,
-                    'error' => $validator->errors()->toArray()
-                )
-            );
-        }
-        if (isset($request->id) && $request->id != 0) {
-            User::where('id', $request->id)  // find your user by their email
-                ->limit(1)  // optional - to ensure only one record is updated.
-                ->update(
-                    array(
-                        'password' => bcrypt($request->password),
-                    )
-                );  // update the record in the DB. 
-        }
-        return response()->json(
-            array(
-                'isok' => true,
-                'error' => null,
-              
-            )
-        );
+        //  dd($request);
+
+        User::find($id)->update([
+            'password' => bcrypt($request->password),
+        ]);
+        // dd($id);
+        return redirect('/user/userList')->with("status", "Password changed successfully!");
     }
 
 }

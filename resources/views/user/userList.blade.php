@@ -20,6 +20,11 @@
                  </div>
               </div>
                  <br/>
+                 @if(session('status'))
+                <div class="alert alert-success mb-1 mt-1">
+                {{ session('status') }}
+                </div>
+                @endif
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">

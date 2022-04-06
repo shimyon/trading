@@ -15,7 +15,7 @@
     {{ session('status') }}
     </div>
     @endif
-    <form action="/user/password" class="user" method="POST" enctype="multipart/form-data">
+    <form action="/user/password/{{$users->id}}" class="user" method="POST">
     @csrf
     <div class="form-group">
             <input type="text" class="form-control form-control-user" value="{{ $user_name }}" name="username" readonly>
@@ -37,20 +37,22 @@
         </div>
     </div>
       <center>
-       <button type="submit" class="btn btn-primary ml-3" >Change Password</button>
+        <button type="submit" class="btn btn-primary">Change password </button>
       </center>
  </form>
 </div>
 @endsection
-    <script>
+@section('scripts')
+    <script>  
+        $(document).ready(function() {
         var id = {{ app('request')->input('id') }};
-
+        debugger  
         $(function() {
             if (id != 0) {
                 GetById();
             }
         })
-
+         
         function GetById() {
             $.ajax({
                 "url": "./get",
@@ -97,4 +99,6 @@
                 }
             });
         }
+    });
     </script>
+    @endsection
