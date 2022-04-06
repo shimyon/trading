@@ -10,10 +10,10 @@
     </div>
     <br/>
     @if(session('status'))
-    <div class="alert alert-success mb-1 mt-1">
-    {{ session('status') }}
+     <div class="alert alert-success mb-1 mt-1">
+     {{ session('status') }}
     </div>
-    @endif
+   @endif
     <form action="/config/configFormStore" class="user" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group row">

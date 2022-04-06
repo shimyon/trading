@@ -12,13 +12,18 @@
             <div class="container-fluid">
               <div class="row">
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Configuration List</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <h1 class="h3 mb-2 text-gray-800">Configuration List</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  <div class="col-md-8"> 
                     <a class="btn btn-success" href="/config/configFormAdd" style="float:right;"> Create Config</a>
                      {{-- <button type="button" class="btn btn-info btn-xs" style="float:right;" >Add New</button>  --}}
                  </div>
               </div>
                  <br/>
+                 @if(session('status'))
+                <div class="alert alert-success mb-1 mt-1">
+                {{ session('status') }}
+                </div>
+                @endif
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">

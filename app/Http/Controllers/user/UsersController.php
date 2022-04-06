@@ -27,7 +27,7 @@ class UsersController extends Controller
         $validatedData = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'email' => ['required','email','regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail|yahoo)\.com$/','unique:users'],
         ]);
          User::create([
             'firstname' => $request->firstname,
@@ -38,7 +38,7 @@ class UsersController extends Controller
         ]);
         //  dd($show);
    
-        return redirect('/user/userList')->with('success', 'User is successfully saved');
+        return redirect('/user/userList')->with('status', 'User is successfully saved');
     }
 
     public function edituser(Request $request,$id)
@@ -53,7 +53,7 @@ class UsersController extends Controller
         $validatedData = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'email' => ['required','email','regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail|yahoo)\.com$/','unique:users'],
         ]);
          User::find($id)->update([
             'firstname' => $request->firstname,
@@ -64,7 +64,7 @@ class UsersController extends Controller
         ]);
         //  dd($show);
    
-        return redirect('/user/userList')->with('success', 'User is successfully saved');
+        return redirect('/user/userList')->with('status', 'User successfully Updated');
     }
 
     public function deleteUser($id)
@@ -72,7 +72,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('/user/userList')->with('success', ' User Data is successfully deleted');
+        return redirect('/user/userList')->with('status', ' User Data is successfully deleted');
     }
 
     public function editpassword(Request $request,$id)

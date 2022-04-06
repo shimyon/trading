@@ -47,7 +47,7 @@ class ConfigurationController extends Controller
         $show = Configuration::create($validatedData);
         //  dd($show);
    
-        return redirect('/config/configList')->with('success', 'Configuration is successfully saved');
+        return redirect('/config/configList')->with('status', 'Configuration successfully created');
     }
 
     public function editconfig(Request $request,$id)
@@ -84,7 +84,7 @@ class ConfigurationController extends Controller
           Configuration::find($id)->update($validatedData);
         //   dd($validatedData);
 
-        return redirect('/config/configList')->with('success', 'Configuration successfully updated');
+        return redirect('/config/configList')->with('status', 'Configuration successfully updated');
     }
 
     public function deleteConfig($id)
@@ -92,6 +92,6 @@ class ConfigurationController extends Controller
         $configuration = Configuration::findOrFail($id);
         $configuration->delete();
 
-        return redirect('/config/configList')->with('success', ' Configuration Data is successfully deleted');
+        return redirect('/config/configList')->with('status', ' Configuration successfully deleted');
     }
 }

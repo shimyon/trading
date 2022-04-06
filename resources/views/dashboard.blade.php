@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/asset/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/asset/css/custom.css" rel="stylesheet">    
 
 </head>
 
@@ -79,13 +80,12 @@
 
         </ul>
         <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
-
+               
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -95,13 +95,17 @@
                     </button>
 
                     <!-- Topbar Search -->
-
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        @if(session('status'))
+                        <div class="alert alert-success success mb-1 mt-1">
+                        {{ session('status') }}
+                        </div>
+                        @endif
+                    </div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -526,7 +530,6 @@
     <script src="/asset/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-
 </body>
 
 </html>
