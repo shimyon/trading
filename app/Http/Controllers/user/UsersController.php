@@ -93,7 +93,8 @@ class UsersController extends Controller
         // $users->get('id');
         // dd($users);
         $request->validate([
-            'password' => 'required',
+            'password' => 'required|min:6',
+            'repeatpassword' => 'required|same:password|min:6',
         ]);
         //  dd($request);
 
