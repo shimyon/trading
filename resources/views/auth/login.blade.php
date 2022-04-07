@@ -27,6 +27,7 @@
                                 <form action="/customauth/customLogin" class="user" method="POST">
                                     @csrf
                                     <div class="form-group">
+                                        <label for="Email">Email</label>
                                         <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror"
                                             id="Email" name="email" aria-describedby="emailHelp"
                                             placeholder="Enter Email Address...">
@@ -35,6 +36,7 @@
                                             @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="Password">Password</label>
                                         <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror"
                                             id="Password" name="password" placeholder="Password">
                                             @error('password')

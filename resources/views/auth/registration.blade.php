@@ -21,6 +21,7 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="firstname">First Name</label>
                                 <input type="text" class="form-control form-control-user @error('firstname') is-invalid @enderror" name="firstname" id="FirstName"
                                     placeholder="First Name">
                                     @error('firstname')
@@ -28,6 +29,7 @@
                                     @enderror
                             </div>
                             <div class="col-sm-6">
+                                <label for="lastname">Last Name</label>
                                 <input type="text" class="form-control form-control-user @error('lastname') is-invalid @enderror" name="lastname" id="LastName"
                                     placeholder="Last Name">
                                     @error('lastname')
@@ -36,6 +38,7 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="email">Email</label>
                             <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" id="Email"
                                 placeholder="Email Address">
                                 @error('email')
@@ -44,6 +47,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="password">Password</label>
                                 <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password"
                                     id="Password" placeholder="Password">
                                     @error('password')
@@ -51,6 +55,7 @@
                                     @enderror
                             </div>
                             <div class="col-sm-6">
+                                <label for="repeatpassword">Conform Password</label>
                                 <input type="password" class="form-control form-control-user @error('repeatpassword') is-invalid @enderror" name="repeatpassword"
                                     id="RepeatPassword" placeholder="Conform Password">
                                     @error('password')

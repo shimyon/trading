@@ -15,6 +15,7 @@
     @csrf
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="firstname">First Name</label>
             <input type="text" class="form-control form-control-user @error('firstname') is-invalid @enderror" value="{{ $users->firstname }}" name="firstname" id="FirstName"
                 placeholder="Enter User First Name">
                 @error('firstname')
@@ -22,6 +23,7 @@
                 @enderror
         </div>
         <div class="col-sm-6">
+            <label for="lastname">Last Name</label>
             <input type="text" class="form-control form-control-user @error('lastname') is-invalid @enderror" value="{{ $users->lastname }}" name="lastname" id="LastName"
                 placeholder="Enter User Last Name">
                 @error('lastname')
@@ -31,6 +33,7 @@
     </div>
     
     <div class="form-group">
+        <label for="email">Email</label>
         <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" value="{{ $users->email }}"
             id="Email" name="email" placeholder="Enter Your Email Address">
             @error('email')

@@ -18,10 +18,12 @@
     <form action="/user/password/{{$users->id}}" class="user" method="POST">
     @csrf
     <div class="form-group">
+        <label for="username">User Name</label>
             <input type="text" class="form-control form-control-user" value="{{ $user_name }}" name="username" readonly>
     </div>
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="password">Password</label>
             <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" id="Password"
                 placeholder="Enter User New Password">
                 @error('password')
@@ -29,6 +31,7 @@
                 @enderror
         </div>
         <div class="col-sm-6">
+            <label for="repeatpassword">Conform Password</label>
             <input type="password" class="form-control form-control-user @error('repeatpassword') is-invalid @enderror" name="repeatpassword"
                 id="RepeatPassword" placeholder="Enter User Conform Password">
                 @error('password')
@@ -42,63 +45,3 @@
  </form>
 </div>
 @endsection
-@section('scripts')
-    <script>  
-        $(document).ready(function() {
-        var id = {{ app('request')->input('id') }};
-        debugger  
-        $(function() {
-            if (id != 0) {
-                GetById();
-            }
-        })
-         
-        function GetById() {
-            $.ajax({
-                "url": "./get",
-                "method": "GET",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                "data": {
-                    "id": id,
-                },
-                success: function(res) {
-                
-                },
-                error: function(err) {
-                    //alert("Data not saved! Please try again.");
-                }
-            });
-        }
-
-        function change() {
-            $.ajax({
-                "url": "/user/password",
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                "data": {
-                    "id": id,
-                    "password": $('#Password').val(),
-                    "repeatpassword": $('#RepeatPassword').val()
-                },
-                success: function(res) {
-                    if (res.isok) {
-                        alert("Data saved successfully");
-                        window.location.href = './';
-                    } else {
-                        for (const key in res.error) {
-                            alert(res.error[key].join());
-                        }
-                    }
-                },
-                error: function(err) {
-                    alert("Data not saved! Please try again.");
-                }
-            });
-        }
-    });
-    </script>
-    @endsection
