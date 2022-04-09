@@ -56,13 +56,15 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ date('d/M/Y', strtotime($user->created_at)) }}</td>
                                         <td>
-                                        <form action="/user/deleteUser/{{$user->id }}" method="Post">
                                         <a href="/user/edituser/{{$user->id }}" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
                                         <a class="btn btn-secondary" href="/user/editpassword/{{$user->id }}" >Change Password</a>
-                                        @csrf
-                                        @method('POST')
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-eraser"></i>Delete</button>
-                                        </form>
+                                        <!-- 
+                                        <form action="/user/deleteUser/{{$user->id }}" method="Post">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-eraser"></i>Delete</button>
+                                        </form> 
+                                        -->
                                         </td>
                                     </tr>
                                     @endforeach

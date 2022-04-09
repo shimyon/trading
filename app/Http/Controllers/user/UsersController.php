@@ -7,13 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     public function userList()
     {
-        $users = User::all(); 
-        return view('user.userList',compact('users'));
+        $userId = Auth::id();
+        if ($userId == 1) {
+            $users = User::all(); 
+            return view('user.userList',compact('users'));
+        } else {
+            $users = User::where('id','=', $userId)->get(); 
+            return view('user.userList',compact('users'));
+        }
     }
 
     public function userFormAdd()

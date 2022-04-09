@@ -69,9 +69,9 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect("/config/configList");
-            // return redirect()->intended('/customauth/Dashboard')
-            //             ->with('status','You have Successfully loggedin');
+            // return redirect()->intended("/config/configList");
+            return redirect()->intended('/customauth/Dashboard')
+                        ->with('status','You have Successfully loggedin');
         }
 
         return redirect("/customauth/usersLogin")->withSuccess('Oppes! You have entered invalid credentials');

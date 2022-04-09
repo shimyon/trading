@@ -18,18 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
-});
-Route::get('/customauth/usersLogin', [CustomAuthController::class, 'usersLogin'])->name('login');
+})->name('login');
 
+
+// login and registration
+Route::get('/customauth/usersLogin', [CustomAuthController::class, 'usersLogin']);
 Route::post('/customauth/customLogin', [CustomAuthController::class, 'customLogin']);
+Route::get('/customauth/usersRegistration', [CustomAuthController::class, 'usersRegistraton']);
+Route::post('/customauth/storeRegister', [CustomAuthController::class, 'storeRegister']);
+Route::get('/customauth/ViewDesk', [CustomAuthController::class, 'ViewDesk']);
+Route::get('/customauth/Dashboard', [CustomAuthController::class, 'Dashboard']);
 
 Route::group(['middleware' => ['auth']], function () {
 
-// login and registration
-    Route::get('/customauth/usersRegistration', [CustomAuthController::class, 'usersRegistraton']);
-    Route::post('/customauth/storeRegister', [CustomAuthController::class, 'storeRegister']);
-    Route::get('/customauth/ViewDesk', [CustomAuthController::class, 'ViewDesk']);
-    Route::get('/customauth/Dashboard', [CustomAuthController::class, 'Dashboard']);
 // configuration
     Route::get('/config/configList', [ConfigurationController::class, 'configList']);
     Route::get('/config/configFormAdd', [ConfigurationController::class, 'configFormAdd']);
