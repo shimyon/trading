@@ -29,7 +29,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => ['required','email','regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail|yahoo)\.com$/','unique:users'],
+            'email' => ['required','email','regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)com$/','unique:users'],
             'password' => 'required|min:6',
             'repeatpassword' => 'required|same:password|min:6',
         ]);
