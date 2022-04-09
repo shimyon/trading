@@ -3,23 +3,25 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 
 class CustomAuthController extends Controller
 {
-    public function Dashboard(){
+    public function Dashboard()
+    {
         return view('dashboard');
     }
 
-    public function ViewDesk(){
+    public function ViewDesk()
+    {
         return view('sidemenu');
     }
 
-    public function usersRegistraton(){
+    public function usersRegistraton()
+    {
         return view('auth.registration');
     }
 
@@ -29,7 +31,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => ['required','email','regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)com$/','unique:users'],
+            'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)com$/', 'unique:users'],
             'password' => 'required|min:6',
             'repeatpassword' => 'required|same:password|min:6',
         ]);
@@ -37,7 +39,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect('/customauth/usersLogin')->with('success','Registration created successfully.');
+        return redirect('/customauth/usersLogin')->with('success', 'Registration created successfully.');
     }
 
     public function create(array $data)
@@ -51,23 +53,27 @@ class CustomAuthController extends Controller
         ]);
     }
 
-    public function usersLogin(){
+    public function usersLogin()
+    {
+        Session::flush();
+        Auth::logout();
         return view('auth.login');
     }
 
     public function customLogin(Request $request)
     {
         $request->validate([
-            'email' => ['required','regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)com$/'],
+            'email' => ['required', 'regex:/^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)com$/'],
             'password' => 'required',
         ]);
-   
+
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/customauth/Dashboard')
-                        ->with('status','You have Successfully loggedin');
+            return redirect("/config/configList");
+            // return redirect()->intended('/customauth/Dashboard')
+            //             ->with('status','You have Successfully loggedin');
         }
-  
+
         return redirect("/customauth/usersLogin")->withSuccess('Oppes! You have entered invalid credentials');
 
     }
