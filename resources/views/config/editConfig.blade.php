@@ -111,16 +111,16 @@
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" {{ $configurations->isStop == 1  ? 'checked' : '' }} name="isStop" id="isStop" checked>
-                <label class="form-check-label" for="flexCheckDefault" checked>
+                <input class="form-check-input" type="checkbox" {{ $configurations->isStop == 1  ? 'checked' : '' }} name="isStop" id="isStop">
+                <label class="form-check-label" for="flexCheckDefault">
                   Stop
                 </label>
             </div>
         </div>
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" {{ $configurations->isStopLossHandle == 1  ? 'checked' : '' }} name="isStopLossHandle" id="isStopLossHandle" checked>
-                <label class="form-check-label" for="flexCheckDefault" checked>
+                <input class="form-check-input" type="checkbox" {{ $configurations->isStopLossHandle == 1  ? 'checked' : '' }} name="isStopLossHandle" id="isStopLossHandle">
+                <label class="form-check-label" for="flexCheckDefault">
                   Stop Loss Handle
                 </label>
             </div>

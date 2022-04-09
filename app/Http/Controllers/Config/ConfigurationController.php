@@ -5,6 +5,7 @@ namespace App\Http\Controllers\config;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Configuration;
+use Mail;
 
 class ConfigurationController extends Controller
 {
@@ -63,7 +64,7 @@ class ConfigurationController extends Controller
             'price' => 'required',
             'tp' => 'required',
             'sl' => 'required',
-            'isStop' => 'required',
+            'isStop' => '',
             'stopon' => 'required',
             'buy_unit' => 'required',
             'exp_sl' => 'required',
@@ -71,18 +72,24 @@ class ConfigurationController extends Controller
             'rsi_buy' => 'required',
             'rsi_sell' => 'required',
             'new_trade_wait_time' => 'required',
-            'isStopLossHandle' => 'required',
+            'isStopLossHandle' => '',
         ]);
-    //  dd($validatedData);
-        if (request('isStop') === 'on') {
-            $validatedData['isStop'] = true;
-        }
+            $validatedData['isStop'] = (request('isStop') === 'on');
 
-        if (request('isStopLossHandle') === 'on') {
-            $validatedData['isStopLossHandle'] = true;
-        }
+            $validatedData['isStopLossHandle'] = (request('isStopLossHandle') === 'on');
+            
           Configuration::find($id)->update($validatedData);
-        //   dd($validatedData);
+          $maildata = array(
+            'id' => $id,
+            'cofigame' => $validatedData['cofigame'],
+            'tp' => $validatedData['tp'],
+            'sl' => $validatedData['sl'],
+            'isStop' => $validatedData['isStop'],
+        );
+        Mail::send('mail', $maildata, function ($message) use (&$validatedData,&$id) {
+            $message->to('shimyon@hotmail.com', "Configuration " . $id . " has been Changed.")
+                ->subject("Configuration " .  $id . " has been Changed");
+        });
 
         return redirect('/config/configList')->with('status', 'Configuration successfully updated');
     }

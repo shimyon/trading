@@ -54,11 +54,11 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="/user/userList">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Users</span></a>
-            </li>
+            </li> --}}
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -479,7 +479,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Emoiss 2022</span>
                     </div>
                 </div>
             </footer>

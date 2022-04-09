@@ -35,20 +35,18 @@
                                 <thead>
                                     <tr>
                                         <th>Config Name</th>
-                                        <th>Price</th>
+                                        <th>Stop</th>
                                         <th>TP</th>
                                         <th>SL</th>
-                                        <th>Stock Opon</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>Config Name</th>
-                                        <th>Price</th>
+                                        <th>Stop</th>
                                         <th>TP</th>
                                         <th>SL</th>
-                                        <th>Stock Opon</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                 </tfoot>
@@ -56,10 +54,9 @@
                                     @foreach ($configurations as $configuration)
                                     <tr>
                                         <td>{{ $configuration->cofigame }}</td>
-                                        <td>{{ $configuration->price }}</td>
+                                        <td class="{{ $configuration->isStop ? 'text-danger':'text-success' }} ">{{ $configuration->isStop ? 'Yes':'No' }}</td>
                                         <td>{{ $configuration->tp }}</td>
                                         <td>{{ $configuration->sl }}</td>
-                                        <td>{{ date('d/M/Y', strtotime($configuration->stopon)) }}</td>
                                         <td>
                                         <form action="/config/deleteConfig/{{$configuration->id }}" method="Post">
                                         <a href="/config/editconfig/{{$configuration->id }}" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
