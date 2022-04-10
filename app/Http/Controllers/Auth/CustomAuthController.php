@@ -57,7 +57,8 @@ class CustomAuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return view('auth.login');
+        // return view('auth.login');
+        return  \Redirect::route("login");
     }
 
     public function customLogin(Request $request)
@@ -69,12 +70,12 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            // return redirect()->intended("/config/configList");
-            return redirect()->intended('/customauth/Dashboard')
-                        ->with('status','You have Successfully loggedin');
+            return redirect()->intended("/config/configList");
+            // return redirect()->intended('/customauth/Dashboard')
+            //             ->with('status','You have Successfully loggedin');
         }
 
-        return redirect("/customauth/usersLogin")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("/")->withSuccess('Oppes! You have entered invalid credentials');
 
     }
 

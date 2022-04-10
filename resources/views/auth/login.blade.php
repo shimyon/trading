@@ -26,6 +26,8 @@
                                 @endif 
                                 <form action="/customauth/customLogin" class="user" method="POST">
                                     @csrf
+                                    
+                                    <!-- {{ csrf_field() }}  -->
                                     <div class="form-group">
                                         <label for="Email">Email</label>
                                         <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror"

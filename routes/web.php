@@ -16,18 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('login');
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', function () {
+        return view('auth.login');
+    })->name('login');
+
+    Route::get('bar', function () {
+        return csrf_token(); // works
+    });
 
 
 // login and registration
-Route::get('/customauth/usersLogin', [CustomAuthController::class, 'usersLogin']);
-Route::post('/customauth/customLogin', [CustomAuthController::class, 'customLogin']);
-Route::get('/customauth/usersRegistration', [CustomAuthController::class, 'usersRegistraton']);
-Route::post('/customauth/storeRegister', [CustomAuthController::class, 'storeRegister']);
-Route::get('/customauth/ViewDesk', [CustomAuthController::class, 'ViewDesk']);
-Route::get('/customauth/Dashboard', [CustomAuthController::class, 'Dashboard']);
+    Route::get('/customauth/usersLogin', [CustomAuthController::class, 'usersLogin']);
+    Route::post('/customauth/customLogin', [CustomAuthController::class, 'customLogin']);
+    Route::post('/customauth/customLogin', [CustomAuthController::class, 'customLogin'])->name('customauth.customLogin');
+    Route::get('/customauth/usersRegistration', [CustomAuthController::class, 'usersRegistraton']);
+    Route::post('/customauth/storeRegister', [CustomAuthController::class, 'storeRegister']);
+    Route::get('/customauth/ViewDesk', [CustomAuthController::class, 'ViewDesk']);
+    Route::get('/customauth/Dashboard', [CustomAuthController::class, 'Dashboard']);
+
+});
 
 Route::group(['middleware' => ['auth']], function () {
 
