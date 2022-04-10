@@ -15,7 +15,9 @@
                 <h1 class="h3 mb-2 text-gray-800">User List</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  <div class="col-md-8"> 
+                    @if(auth()->user()->id == 1)
                     <a class="btn btn-success" href="/user/userFormAdd" style="float:right;"> Create User</a>
+                    @endif
                      {{-- <button type="button" class="btn btn-info btn-xs" style="float:right;" >Add New</button>  --}}
                  </div>
               </div>
