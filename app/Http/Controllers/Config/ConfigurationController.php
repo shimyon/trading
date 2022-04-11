@@ -24,14 +24,10 @@ class ConfigurationController extends Controller
     {
         $validatedData = $request->validate([
             'cofigame' => 'required',
-            'price' => 'required',
             'tp' => 'required',
             'sl' => 'required',
             'isStop' => 'required',
-            'stopon' => 'required',
             'buy_unit' => 'required',
-            'exp_sl' => 'required',
-            'exp_tp' => 'required',
             'rsi_buy' => 'required',
             'rsi_sell' => 'required',
             'new_trade_wait_time' => 'required',
@@ -59,26 +55,25 @@ class ConfigurationController extends Controller
 
     public function configFormupdate(Request $request, $id)
     { 
+        // dd($request);
         $validatedData = $request->validate([
             'cofigame' => 'required',
-            'price' => 'required',
             'tp' => 'required',
             'sl' => 'required',
             'isStop' => '',
-            'stopon' => 'required',
             'buy_unit' => 'required',
-            'exp_sl' => 'required',
-            'exp_tp' => 'required',
             'rsi_buy' => 'required',
             'rsi_sell' => 'required',
             'new_trade_wait_time' => 'required',
             'isStopLossHandle' => '',
         ]);
+        // 
             $validatedData['isStop'] = (request('isStop') === 'on');
 
             $validatedData['isStopLossHandle'] = (request('isStopLossHandle') === 'on');
             
           Configuration::find($id)->update($validatedData);
+        //   dd($validatedData);
           $maildata = array(
             'id' => $id,
             'cofigame' => $validatedData['cofigame'],
