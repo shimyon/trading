@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Configuration;
 use Mail;
+use Illuminate\Support\Facades\DB;
 
 class ConfigurationController extends Controller
 {
@@ -96,4 +97,27 @@ class ConfigurationController extends Controller
 
         return redirect('/config/configList')->with('status', ' Configuration successfully deleted');
     }
+
+    public function changeStatus(Request $request)
+    {
+        $config = Configuration::find($request->id)->update(['isStop' => $request->isStop]);
+        // return redirect('/config/configList')->with('status', 'Status changed successfully.');
+        $getdata = Configuration::select('cofigame','tp','sl')->where('id',$request->id)->get(); 
+        // dd($request);
+         // dd($getdata);
+        $maildata = array(
+            'id' => $request['id'],
+            'cofigame' => $getdata[0]['cofigame'],
+            'tp' => $getdata[0]["tp"],
+            'sl' => $getdata[0]['sl'],
+            'isStop' => $request['isStop'],
+        );
+        //dd($maildata);
+        Mail::send('mailchange', $maildata, function ($message) use (&$validatedData,&$id) {
+            $message->to('shimyon@hotmail.com', "Configuration " . $id . " Status has been Changed.")
+                ->subject("Configuration " .  $id . "  Status has been Changed");
+        });
+         return response()->json(['success'=>'Status changed successfully.']);
+    }
+
 }
