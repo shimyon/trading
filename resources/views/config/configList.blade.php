@@ -59,7 +59,7 @@
                                             {{-- <input data-id="{{$configuration->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $configuration->isStop ? 'checked' : '' }}>  --}}
                                             <div class="form-check">
                                                <input class="form-check-input" type="checkbox" name="isStop" id="isStop" {{($configuration->isStop) ? 'checked' : ''}}
-                                               onclick="changeUserStatus(event.target, {{ $configuration->id }});">
+                                                onclick="changeUserStatus(event.target, {{ $configuration->id }});">
                                                <label class="form-check-label" for="flexCheckDefault" checked>
                                                 Stop
                                              </label>
@@ -107,8 +107,10 @@
 
 @endsection
 <script>
+    
     function changeUserStatus(_this, id) {
-        if (confirm("Do you really want to change your status?")){
+         if (confirm("Do you really want to change your status?")){
+         
         var isStop = $(_this).prop('checked') == true ? 1 : 0;
         let _token = $('meta[name="csrf-token"]').attr('content');
     
@@ -126,7 +128,7 @@
             }
         });
     }
-    }
+}   
     
     </script>
 
