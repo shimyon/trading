@@ -25,66 +25,38 @@
                 </div>
                 @endif
                 <!-- DataTales Example -->
-                <div class="card shadow mb-4">
+                @foreach ($configurations as $configuration)
+                <div class="shadow mb-2" style="background: #4a4ac3;">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Configuration List</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">{{ $configuration->cofigame }}</h6>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Status</th>
-                                        <th>Config Name</th>
-                                        <th>Stop</th>
-                                        <th>TP</th>
-                                        <th>SL</th>
-                                        <th width="280px">Action</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Status</th>
-                                        <th>Config Name</th>
-                                        <th>Stop</th>
-                                        <th>TP</th>
-                                        <th>SL</th>
-                                        <th width="280px">Action</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    @foreach ($configurations as $configuration)
-                                    <tr>
-                                        <td>
-                                            {{-- <input data-id="{{$configuration->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $configuration->isStop ? 'checked' : '' }}>  --}}
-                                            <div class="form-check">
-                                               <input class="form-check-input" type="checkbox" name="isStop" id="isStop" {{($configuration->isStop) ? 'checked' : ''}}
-                                                onclick="changeUserStatus(event.target, {{ $configuration->id }});">
-                                               <label class="form-check-label" for="flexCheckDefault" checked>
-                                                Stop
-                                             </label>
-                                             </div>
-                                         </td>
-                                        <td>{{ $configuration->cofigame }}</td>
-                                        <td class="{{ $configuration->isStop ? 'text-danger':'text-success' }} ">{{ $configuration->isStop ? 'Yes':'No' }}</td>
-                                        <td>{{ $configuration->tp }}</td>
-                                        <td>{{ $configuration->sl }}</td>
-                                        <td>
-                                        <form action="/config/deleteConfig/{{$configuration->id }}" method="Post">
-                                        <a href="/config/editconfig/{{$configuration->id }}" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
-                                        @csrf
-                                        @method('POST')
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-eraser"></i>Delete</button>
-                                        </form>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                    
+                <div class="card-body" style="width: 24rem;color: white;margin-left: 225px;">
+                    <div class="card mb-0" style="background: #4c4cdf;padding: 10px;border: none;">
+                        <p class="card-text">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="isStop" id="isStop" {{($configuration->isStop) ? 'checked' : ''}}
+                                 onclick="changeUserStatus(event.target, {{ $configuration->id }});">
+                                <label class="form-check-label" for="flexCheckDefault" checked>
+                                 Stop
+                              </label>
+                              </div>
+                        </p>
+                        <p class="card-text"><{{ $configuration->isStop ? 'text-danger':'text-success' }} ">{{ $configuration->isStop ? 'Yes':'No' }}</p>
+                        
+                            <a href="/config/editconfig/{{$configuration->id }}" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
+                            @csrf
+                            
+                            {{-- <hr style="background: currentColor;"> --}}
+                                    
                     </div>
+                    
+                    
                 </div>
-
+                
+                
+                </div>
+                @endforeach
             </div>
             <!-- /.container-fluid -->
 
