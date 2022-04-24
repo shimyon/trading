@@ -18,6 +18,7 @@ class Configuration extends Model
         'rsi_buy',
         'rsi_sell',
         'new_trade_wait_time',
+        'servername',
         'isStopLossHandle',
     ];
 }

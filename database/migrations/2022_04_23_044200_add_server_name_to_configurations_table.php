@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('configurations_log', function (Blueprint $table) {
-            $table->dropColumn(['price', 'stopon','exp_sl','exp_tp']);
+        Schema::table('configurations', function (Blueprint $table) {
+            $table->string('servername');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('configurations_log', function (Blueprint $table) {
-            $table->dropColumn('servername');
+        Schema::table('configurations', function (Blueprint $table) {
+            //
         });
     }
 };

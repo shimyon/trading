@@ -23,6 +23,7 @@ class ConfigurationController extends Controller
 
     public function configFormStore(Request $request)
     {
+        // dd($request);
         $validatedData = $request->validate([
             'cofigame' => 'required',
             'tp' => 'required',
@@ -32,6 +33,7 @@ class ConfigurationController extends Controller
             'rsi_buy' => 'required',
             'rsi_sell' => 'required',
             'new_trade_wait_time' => 'required',
+            'servername' => 'required',
             'isStopLossHandle' => 'required',
         ]);
          //dd($validatedData);
@@ -41,9 +43,9 @@ class ConfigurationController extends Controller
         if (request('isStopLossHandle') === 'on') {
             $validatedData['isStopLossHandle'] = true;
         }
-        //   dd($validatedData);
+          // dd($validatedData);
         $show = Configuration::create($validatedData);
-        //  dd($show);
+         // dd($show);
    
         return redirect('/config/configList')->with('status', 'Configuration successfully created');
     }
@@ -66,9 +68,10 @@ class ConfigurationController extends Controller
             'rsi_buy' => 'required',
             'rsi_sell' => 'required',
             'new_trade_wait_time' => 'required',
+            'servername' => 'required',
             'isStopLossHandle' => '',
         ]);
-        // 
+        //dd($validatedData);
             $validatedData['isStop'] = (request('isStop') === 'on');
 
             $validatedData['isStopLossHandle'] = (request('isStopLossHandle') === 'on');

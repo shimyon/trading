@@ -101,13 +101,23 @@
                 @enderror
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
         <label for="new_trade_wait_time">New Trade Wait Time</label>
         <input type="text" class="form-control form-control-user @error('new_trade_wait_time') is-invalid @enderror"
             id="new_trade_wait_time" name="new_trade_wait_time" placeholder="Enter New Trade Wait Time">
             @error('new_trade_wait_time')
                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
             @enderror
+    </div>
+    <div class="col-sm-6">
+        <label for="servername">Server Name</label>
+        <input type="text" class="form-control form-control-user @error('servername') is-invalid @enderror"
+            id="servername" name="servername" placeholder="Enter Server Name">
+            @error('servername')
+               <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+    </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">

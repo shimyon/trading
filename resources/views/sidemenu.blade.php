@@ -17,6 +17,8 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+
+
     <!-- Custom styles for this template-->
     <link href="/asset/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="/asset/css/custom.css" rel="stylesheet">
@@ -106,9 +108,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->getFullNameAttribute() }}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="/asset/image/undraw_profile.svg">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->getFullNameAttribute() }}</span>
+                                <img class="img-profile rounded-circle" src="/asset/image/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -177,6 +179,17 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="/customauth/usersLogin">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="waitLoading" tabindex="-1" aria-labelledby="waitLoading" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="waitLoading">Please wait...</h5>
                 </div>
             </div>
         </div>
