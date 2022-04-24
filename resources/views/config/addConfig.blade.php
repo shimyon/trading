@@ -16,23 +16,23 @@
    @endif
     <form action="/config/configFormStore" class="user" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="form-group row">
-        <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="form-group">
+        {{-- <div class="col-sm-6 mb-3 mb-sm-0"> --}}
         <label for="cofigame">Configuration Name</label>
             <input type="text" class="form-control form-control-user @error('cofigame') is-invalid @enderror" name="cofigame" id="CofiGame"
                 placeholder="Enter Configuration Game">
                 @error('cofigame')
                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
-        </div>
-        <div class="col-sm-6">
+        {{-- </div> --}}
+        {{-- <div class="col-sm-6">
             <label for="price">Price</label>
             <input type="text" class="form-control form-control-user @error('price') is-invalid @enderror" name="price" id="Price"
                 placeholder="Enter Config Price">
                 @error('price')
                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
-        </div>
+        </div> --}}
     </div>
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -52,24 +52,22 @@
                 @enderror
         </div>
     </div>
-    <div class="form-group row">
-        <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="form-group">
             <label for="buy_unit">Buy Unit</label>
             <input type="text" class="form-control form-control-user @error('buy_unit') is-invalid @enderror" name="buy_unit" id="buy_unit"
                     placeholder="Enter Buying Unit">
             @error('buy_unit')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="col-sm-6">
+            @enderror   
+        {{-- <div class="col-sm-6">
             <label for="stopon">Stock Open</label>
             <input type="date" class="form-control form-control-user @error('stopon') is-invalid @enderror" name="stopon" id="stOpon">
                 @error('stopon')
                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
-        </div>
+        </div> --}}
     </div>
-    <div class="form-group row">
+    {{-- <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
             <label for="exp_sl">Exp SL</label>
                 <input type="text" class="form-control form-control-user @error('exp_sl') is-invalid @enderror" name="exp_sl" id="exp_sl"
@@ -85,7 +83,7 @@
                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
         </div>
-    </div>
+    </div> --}}
     <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
             <label for="rsi_buy">Rsi Buy</label>

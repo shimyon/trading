@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/config/editconfig/{id}', [ConfigurationController::class, 'editconfig']);
     Route::post('/config/configFormupdate/{configurations}', [ConfigurationController::class, 'configFormupdate']);
     Route::post('/config/deleteConfig/{id}', [ConfigurationController::class, 'deleteConfig']);
+    Route::get('/config/checkconfigstop/{id}', [ConfigurationController::class, 'checkconfigstop']);
+    Route::get('/config/change-status', [ConfigurationController::class, 'changeStatus']);
 
 // users
     Route::get('/user/userList', [UsersController::class, 'userList']);
